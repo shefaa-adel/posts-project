@@ -1,0 +1,3 @@
+<template>
+    author posts
+</template>
