@@ -1,8 +1,8 @@
 <template>
-  <base-card>
+  <base-card> 
   <ul>
     <post-item
-      v-for="post in allPosts"
+      v-for="post in userPosts"
       :key="post.id"
       :id="post.id"
       :title="post.title"
@@ -10,7 +10,7 @@
       :userId="post.userId"
     ></post-item>
   </ul>
-</base-card>
+  </base-card>
 </template>
 
 <script>
@@ -19,23 +19,20 @@ import PostItem from "../components/posts/PostItem.vue";
 
 export default {
   components: { PostItem },
-  methods: {
-    ...mapActions("posts", ["getAllPosts"]),
-    ...mapActions("users", ["getAllUsers"]),
+  props: ["id"],
+  data(){
+    return{
+        userPosts:[]
+    }
   },
   computed: {
-    ...mapGetters("posts", ["allPosts"]),
-    
+    ...mapGetters("posts", ["getUserPosts"]),
   },
   mounted() {
-      this.getAllUsers();
-    this.getAllPosts();
-
+    this.userPosts=this.getUserPosts(this.id);
   },
 };
 </script>
-
-
 
 <style scoped>
 ul {

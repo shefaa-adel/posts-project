@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import AllPosts from '../pages/AllPosts.vue'
 import PostDetails from '../pages/PostDetails.vue'
-import AuthorPosts from '../pages/AuthorPosts.vue'
+import AllUsers from '../pages/AllUsers.vue'
+import UserPosts from '../pages/UserPosts.vue'
 import PageNotFound from '../pages/PageNotFound.vue'
 
 
@@ -17,9 +18,14 @@ const router = createRouter({
       
     },
     {
-      path: '/authors/:id',
+      path: '/users',
+      component: AllUsers,
+      
+    },
+    {
+      path: '/users/:id',
       props:true,
-      component: AuthorPosts,
+      component: UserPosts,
       
     },
     {path:'/:notFound(.*)',component:PageNotFound}

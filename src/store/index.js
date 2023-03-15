@@ -1,6 +1,6 @@
 import { createStore } from 'vuex'
 import postsModule from './modules/posts/index'
-import authorsModule from './modules/authors/index'
+import usersModule from './modules/users/index'
 import rootMutations from './mutations'
 import rootActions from './actions'
 import rootGetters from './getters'
@@ -9,10 +9,11 @@ import rootGetters from './getters'
 const store = createStore({
     modules:{
         posts:postsModule,
-        authors:authorsModule
+        users:usersModule
     },
   state () {
     return {
+      counter:0,
       
     }
   },

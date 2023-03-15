@@ -1,11 +1,20 @@
-<script >
+<template>
+  <Header/>
+  <RouterView />
+</template>
+
+<script>
 import { RouterLink, RouterView } from 'vue-router'
+import Header from './components/layout/Header.vue'
+
+export default {
+  components:{Header},
+  
+}
 
 </script>
 
-<template>
-  <RouterView />
-</template>
+
 
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
