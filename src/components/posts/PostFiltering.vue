@@ -2,7 +2,7 @@
     <base-card>
       <h2>Find Your Favourite Users' Posts</h2>
       <span class="filter-option" v-for="user in allUsers" :key="user.id">
-        <input type="checkbox" :id="user.id" checked @change="setFilters" />
+        <input type="checkbox" :id="user.id"  @change="setFilters" />
         <label :for="user.id">{{ user.name }}</label>
       </span>
     </base-card>
@@ -34,7 +34,7 @@ import { mapGetters } from "vuex";
       }
   },
   mounted(){
-    this.allUsers.forEach(user => this.filters={...this.filters, [user.id]:true})
+    this.allUsers.forEach(user => this.filters={...this.filters, [user.id]:false})
   }
   }
   

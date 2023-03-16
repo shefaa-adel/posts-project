@@ -96,7 +96,7 @@ export default {
     this.getAllUsers();
     this.getAllPosts();
     this.allUsers.forEach((user) => {
-      this.usersFilters = { ...this.usersFilters, [user.id]: true };
+      this.usersFilters = { ...this.usersFilters, [user.id]: false };
     });
     this.filteredPosts = this.allPosts;
 
