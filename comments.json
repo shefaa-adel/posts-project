@@ -1,0 +1,61 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    },
+    {
+      "txt": "1ggg",
+      "postId": "1",
+      "id": 2
+    },
+    {
+      "txt": "2hh",
+      "postId": "2",
+      "id": 3
+    },
+    {
+      "txt": "hhhhhhhh",
+      "postId": "2",
+      "id": 4
+    },
+    {
+      "txt": "44444444",
+      "postId": "4",
+      "id": 5
+    },
+    {
+      "txt": "hello from 1",
+      "postId": "1",
+      "id": 6
+    },
+    {
+      "txt": "hello",
+      "postId": "1",
+      "id": 7
+    },
+    {
+      "userName": "Shefaa Adel",
+      "txt": "hello",
+      "postId": "2",
+      "id": 8
+    },
+    {
+      "userName": "Shefaa Adel",
+      "txt": "jjjjj",
+      "postId": "2",
+      "id": 9
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

@@ -20,7 +20,7 @@ export default {
   computed: {
     ...mapGetters("users", ["getUserById"]),
     postDetailsLink() {
-      return this.$route.path + "/" + this.id;
+      return  "posts/" + this.id;
     },
   
   }, created(){
@@ -37,6 +37,7 @@ li {
   border: 1px solid #424242;
   border-radius: 12px;
   padding: 1rem;
+
 }
 
 h3 {

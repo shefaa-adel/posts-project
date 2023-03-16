@@ -1,12 +1,19 @@
 <template>
-  <section>
-    <Post-filtering @filter-change="changeContent"></Post-filtering>
-  </section>
   <base-card>
+    <!-- <ul>
+      <post-item
+        v-for="post in filterdPosts"
+        :key="post.id"
+        :id="post.id"
+        :title="post.title"
+        :body="post.body"
+        :userId="post.userId"
+      ></post-item>
+    </ul> -->
     <ul>
       <post-item
         v-if="!needsPagination"
-        v-for="post in filteredPosts"
+        v-for="post in filterdPosts"
         :key="post.id"
         :id="post.id"
         :title="post.title"
@@ -39,67 +46,65 @@
 <script>
 import { mapActions, mapGetters } from "vuex";
 import PostItem from "../components/posts/PostItem.vue";
-import PostFiltering from "../components/posts/PostFiltering.vue";
 
 export default {
-  components: { PostItem, PostFiltering },
+  components: { PostItem },
+  props: ["input"],
   data() {
     return {
+      filterdPosts: "",
       postsPerPage: 20,
       page: 1,
       paginationListCount: 0,
       paginationListPosts: [],
-      usersFilters: "",
-      filteredPosts: "",
     };
   },
   methods: {
-    ...mapActions("posts", ["getAllPosts"]),
-    ...mapActions("users", ["getAllUsers"]),
-    initPage() {
-      this.paginationListCount = this.filteredPosts.length;
+    setFilteredPosts() {
+      this.filterdPosts = this.allPosts.filter(
+        (post) =>
+          post.title.toLowerCase().includes(this.input.toLowerCase()) ||
+          post.body.toLowerCase().includes(this.input.toLowerCase())
+
+      );
+
+       const targetUsers= this.allUsers.filter((user) =>
+          user.name.toLowerCase().includes(this.input.toLowerCase())
+        )
+
+     
+      targetUsers.forEach(user=>this.filterdPosts=this.filterdPosts.concat(this.getUserPosts(user.id)))
+    }, initPage() {
+      this.paginationListCount = this.filterdPosts.length;
       if (this.paginationListCount < this.postsPerPage) {
-        this.paginationListPosts = this.filteredPosts;
+        this.paginationListPosts = this.filterdPosts;
       } else {
-        this.paginationListPosts = this.filteredPosts.slice(0, this.postsPerPage);
+        this.paginationListPosts = this.filterdPosts.slice(0, this.postsPerPage);
       }
     },
     updatePage(pageIndex) {
       let start = (pageIndex - 1) * this.postsPerPage;
       let end = pageIndex * this.postsPerPage;
-      this.paginationListPosts = this.filteredPosts.slice(start, end);
+      this.paginationListPosts = this.filterdPosts.slice(start, end);
       this.page = pageIndex;
-    },
-    changeContent(filters) {
-      this.usersFilters = filters;
-      this.filteredPosts = this.allPosts.filter((post) => {
-        for (const userId in this.usersFilters){
-          if(this.usersFilters[userId]&& +userId === post.userId)
-          return true
-        }  
-      });
-      this.updatePage(this.page)
     },
   },
   computed: {
-    ...mapGetters("posts", ["allPosts"]),
+    ...mapGetters("posts", ["allPosts",'getUserPosts']),
     ...mapGetters("users", ["allUsers"]),
     needsPagination() {
-      return this.filteredPosts.length > this.postsPerPage;
+      return this.filterdPosts.length > this.postsPerPage;
     },
     PagesLength() {
-      if (this.postsPerPage == null || this.filteredPosts == null) return 0;
-      return Math.ceil(this.filteredPosts.length / this.postsPerPage);
+      if (this.postsPerPage == null || this.filterdPosts == null) return 0;
+      return Math.ceil(this.filterdPosts.length / this.postsPerPage);
     },
   },
   mounted() {
-    this.getAllUsers();
-    this.getAllPosts();
-    this.allUsers.forEach((user) => {
-      this.usersFilters = { ...this.usersFilters, [user.id]: true };
-    });
-    this.filteredPosts = this.allPosts;
-
+    this.setFilteredPosts();
+  },
+  updated() {
+    this.setFilteredPosts();
   },
   created() {
     this.initPage();

@@ -1,0 +1,26 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "userName": "Shefaa Adel",
+      "txt": "jjjjjjj",
+      "postId": "2",
+      "id": 1
+    },
+    {
+      "userName": "Shefaa Adel",
+      "txt": "hello from 1",
+      "postId": "1",
+      "id": 2
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
