@@ -72,12 +72,17 @@ export default {
     },
     changeContent(filters) {
       this.usersFilters = filters;
-      this.filteredPosts = this.allPosts.filter((post) => {
+      if(Object.keys(this.usersFilters).every(element => this.usersFilters[element]===false)){
+        this.filteredPosts=this.allPosts;
+      }else{
+        this.filteredPosts = this.allPosts.filter((post) => {
         for (const userId in this.usersFilters){
           if(this.usersFilters[userId]&& +userId === post.userId)
           return true
         }  
       });
+      }
+     
       this.updatePage(this.page)
     },
   },
