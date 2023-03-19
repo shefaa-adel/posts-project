@@ -1,33 +1,21 @@
 <template>
-  <Header/>
-  <RouterView />
+  <v-app>
+    <Header />
+    
+  <Footer></Footer>
+</v-app>
 </template>
 
 <script>
-import { RouterLink, RouterView } from 'vue-router'
-import Header from './components/layout/Header.vue'
+
+import Header from "./components/layout/header/Header.vue";
+import Footer from "./components/layout/footer/Footer.vue";
 
 export default {
-  components:{Header},
-  
-}
-
+  components: { Header,Footer },
+};
 </script>
 
-
-
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
-
-* {
-  box-sizing: border-box;
-}
-
-html {
-  font-family: "Roboto", sans-serif;
-}
-
-body {
-  margin: 0;
-}
+@import "./style/App.css";
 </style>

@@ -1,19 +1,41 @@
 <template>
-  <li>
-    <h3>{{ title }}</h3>
-    <h6>{{ body }}</h6>
-    <p>By: {{ userName }}</p>
-    <div class="actions">
-      <base-button link :to="postDetailsLink">View Post</base-button>
-    </div>
-  </li>
+  <v-card
+    class="mx-auto rounded-card" elevation="0"
+  >
+    <v-img
+      :src="postImg" 
+      height="200px"
+      cover
+      class="mt-0"
+    ></v-img>
+
+    <v-card-title>
+      {{title}}
+    </v-card-title>
+
+    <v-card-subtitle>
+      By: {{ userName }}
+    </v-card-subtitle>
+
+    <v-card-actions>
+ 
+      <v-btn
+        color="orange-lighten-1"
+        variant="text"
+        :to="postDetailsLink"
+      >
+        Read more
+      </v-btn> 
+    </v-card-actions>
+
+  </v-card>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
 
 export default {
-  props: ["id", "title", "body", "userId"],
+  props: ["id", "title", "userId",'img'],
   data(){return{
     userName:'',
   }},
@@ -22,6 +44,9 @@ export default {
     postDetailsLink() {
       return  "posts/" + this.id;
     },
+    postImg(){
+      return new URL(`../../assets/post${Math.floor(Math.random() * 6) + 1}.jpg`,import.meta.url).href
+    }
   
   }, created(){
     this.userName=this.getUserById(this.userId)?.name;
@@ -32,14 +57,10 @@ export default {
 </script>
 
 <style scoped>
-li {
-  margin: 1rem 0;
-  border: 1px solid #424242;
-  border-radius: 12px;
-  padding: 1rem;
 
+v-card{
+  height: 300px;
 }
-
 h3 {
   font-size: 1.5rem;
 }

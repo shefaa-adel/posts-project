@@ -1,65 +1,53 @@
 <template>
-    <base-card>
-      <h2>Find Your Favourite Users' Posts</h2>
-      <span class="filter-option" v-for="user in allUsers" :key="user.id">
-        <input type="checkbox" :id="user.id"  @change="setFilters" />
-        <label :for="user.id">{{ user.name }}</label>
-      </span>
-    </base-card>
-  </template>
-  
-<script>
+  <v-sheet>
+    <h2 class="ms-3">Find Your Favourite Users' Posts</h2>
+    <v-list-item class="filter-option" v-for="user in allUsers" :key="user.id">
+      <input type="checkbox" :id="user.id" @change="setFilters" />
+      <label :for="user.id">{{ user.name }}</label>
+    </v-list-item>
+    <!-- <v-list-item title="hello"></v-list-item> -->
+  </v-sheet>
+</template>
 
+<script>
 import { mapGetters } from "vuex";
-  export default{
-      emits: ['filter-change'],
-      computed:{
-        ...mapGetters("users", ["allUsers"]),
-      },
-      data(){
-      return{
-          filters:''
-      }
+export default {
+  emits: ["filter-change"],
+  computed: {
+    ...mapGetters("users", ["allUsers"]),
   },
-  methods:{
-      setFilters(event){
-          const eventId=event.target.id;
-          const isActive=event.target.checked;
-          this.filters={
-              ...this.filters,
-              [eventId]:isActive
-          }
-          
-          this.$emit('filter-change',this.filters);
-      }
+  data() {
+    return {
+      filters: "",
+    };
   },
-  mounted(){
-    this.allUsers.forEach(user => this.filters={...this.filters, [user.id]:false})
-  }
-  }
-  
-  </script>
-  
-  <style scoped>
-  h2 {
-    margin: 0.5rem 0;
-  }
-  
+  methods: {
+    setFilters(event) {
+      const eventId = event.target.id;
+      const isActive = event.target.checked;
+      this.filters = {
+        ...this.filters,
+        [eventId]: isActive,
+      };
+
+      this.$emit("filter-change", this.filters);
+    },
+  },
+  mounted() {
+    this.allUsers.forEach(
+      (user) => (this.filters = { ...this.filters, [user.id]: false })
+    );
+  },
+};
+</script>
+
+<style scoped>
+.filter-option label {
+  margin-left: 0.5rem;
+}
+@media only screen and (max-width: 768px) {
   .filter-option {
-    margin-right: 1rem;
+    display: inline-block;
   }
-  
-  .filter-option label,
-  .filter-option input {
-    vertical-align: middle;
-  }
-  
-  .filter-option label {
-    margin-left: 0.25rem;
-  }
-  
-  .filter-option.active label {
-    font-weight: bold;
-  }
-  </style>
-  
+}
+</style>

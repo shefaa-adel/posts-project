@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Space Grotesk');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Space Grotesk";
+  background-color: #FEFAF6;
+
+}
+
+.container {
+  max-width: 1140px;
+}

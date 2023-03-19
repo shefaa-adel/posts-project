@@ -1,15 +1,8 @@
 <template>
   <base-card>
-    <!-- <ul>
-      <post-item
-        v-for="post in filterdPosts"
-        :key="post.id"
-        :id="post.id"
-        :title="post.title"
-        :body="post.body"
-        :userId="post.userId"
-      ></post-item>
-    </ul> -->
+  <PostSearching :searchInput="input"></PostSearching>
+  </base-card>
+  <base-card>
     <ul>
       <post-item
         v-if="!needsPagination"
@@ -46,9 +39,10 @@
 <script>
 import { mapActions, mapGetters } from "vuex";
 import PostItem from "../components/posts/PostItem.vue";
+import PostSearching from "../components/posts/PostSearching.vue";
 
 export default {
-  components: { PostItem },
+  components: { PostItem,PostSearching },
   props: ["input"],
   data() {
     return {
