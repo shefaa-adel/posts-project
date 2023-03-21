@@ -38,9 +38,10 @@ const router = createRouter({
     },
     {
       path: "/search/:input",
-      props:true,
+      props: true,
       component: SearchResult,
-    }, { path: "/search/posts/:id", props: true, component: PostDetails },
+    },
+    { path: "/search/posts/:id", props: true, component: PostDetails },
     { path: "/:notFound(.*)", component: PageNotFound },
   ],
 });

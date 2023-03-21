@@ -1,7 +1,9 @@
+import axios from "axios";
 export default {
-    getAllUsers({commit}){
-        commit('getAllUsers')
-    },
-   
-
-}
+  async getAllUsers({ commit }) {
+    const response = await axios.get(
+      "https://jsonplaceholder.typicode.com/users"
+    );
+    commit("getAllUsers", response.data);
+  },
+};

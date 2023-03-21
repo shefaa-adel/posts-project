@@ -1,16 +1,17 @@
 <template>
-  <base-card> 
-  <ul>
-    <post-item
-      v-for="post in userPosts"
-      :key="post.id"
-      :id="post.id"
-      :title="post.title"
-      :body="post.body"
-      :userId="post.userId"
-    ></post-item>
-  </ul>
-  </base-card>
+  <v-container>
+    <v-row gutters="1" class="mt-15">
+      <v-col v-for="post in userPosts" cols="12" md="6" lg="4">
+        <post-item
+          :key="post.id"
+          :id="post.id"
+          :title="post.title"
+          :body="post.body"
+          :userId="post.userId"
+        ></post-item>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
@@ -20,16 +21,16 @@ import PostItem from "../components/posts/PostItem.vue";
 export default {
   components: { PostItem },
   props: ["id"],
-  data(){
-    return{
-        userPosts:[]
-    }
+  data() {
+    return {
+      userPosts: [],
+    };
   },
   computed: {
     ...mapGetters("posts", ["getUserPosts"]),
   },
   mounted() {
-    this.userPosts=this.getUserPosts(this.id);
+    this.userPosts = this.getUserPosts(this.id);
   },
 };
 </script>

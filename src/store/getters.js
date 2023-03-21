@@ -1,8 +1,8 @@
 export default {
-   isLogedIn(state){
+  isLogedIn(state) {
     return state.isLogedIn;
-   },
-   currentUser(state){
+  },
+  currentUser(state) {
     return state.currentUser;
-   }
-}
+  },
+};

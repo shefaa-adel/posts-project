@@ -1,48 +1,65 @@
 <template>
-  <base-card>
+  <Cover coverTxt="Read the latest and greatest from our experts"></Cover>
   <PostSearching :searchInput="input"></PostSearching>
-  </base-card>
-  <base-card>
-    <ul>
-      <post-item
-        v-if="!needsPagination"
-        v-for="post in filterdPosts"
-        :key="post.id"
-        :id="post.id"
-        :title="post.title"
-        :body="post.body"
-        :userId="post.userId"
-      ></post-item>
+  <v-container>
+    <v-row no-gutters class="mt-15" v-if="filterdPosts.length">
+      <v-col cols="12">
+        <v-row>
+          <v-col
+            v-show="!needsPagination"
+            v-for="post in filterdPosts"
+            cols="12"
+            md="6"
+            lg="4"
+          >
+            <post-item
+              :key="post.id"
+              :id="post.id"
+              :title="post.title"
+              :userId="post.userId"
+            ></post-item>
+          </v-col>
 
-      <post-item
-        v-if="needsPagination"
-        v-for="post in paginationListPosts"
-        :key="post.id"
-        :id="post.id"
-        :title="post.title"
-        :body="post.body"
-        :userId="post.userId"
-      ></post-item>
-    </ul>
-    <div class="text-center" v-if="needsPagination">
-      <v-pagination
-        class="pagination mb-2"
-        v-model="page"
-        :length="PagesLength"
-        rounded="circle"
-        @click="updatePage(page)"
-      ></v-pagination>
+          <v-col
+            v-show="needsPagination"
+            v-for="post in paginationListPosts"
+            cols="12"
+            md="6"
+            lg="4"
+          >
+            <post-item
+              :key="post.id"
+              :id="post.id"
+              :title="post.title"
+              :userId="post.userId"
+            ></post-item>
+          </v-col>
+        </v-row>
+        <div class="text-center" v-if="needsPagination">
+          <v-pagination
+            class="pagination mb-2"
+            v-model="page"
+            :length="PagesLength"
+            rounded="circle"
+            @click="updatePage(page)"
+          ></v-pagination>
+        </div>
+      </v-col>
+    </v-row>
+    <div v-else class="text-center">
+      <h1>Not matching Results</h1>
     </div>
-  </base-card>
+  </v-container>
 </template>
 
 <script>
-import { mapActions, mapGetters } from "vuex";
+import { mapGetters } from "vuex";
 import PostItem from "../components/posts/PostItem.vue";
 import PostSearching from "../components/posts/PostSearching.vue";
+import Cover from "../components/ui/Cover.vue";
 
 export default {
-  components: { PostItem,PostSearching },
+  components: { PostItem, PostSearching, Cover },
   props: ["input"],
   data() {
     return {
@@ -59,21 +76,28 @@ export default {
         (post) =>
           post.title.toLowerCase().includes(this.input.toLowerCase()) ||
           post.body.toLowerCase().includes(this.input.toLowerCase())
-
       );
 
-       const targetUsers= this.allUsers.filter((user) =>
-          user.name.toLowerCase().includes(this.input.toLowerCase())
-        )
+      const targetUsers = this.allUsers.filter((user) =>
+        user.name.toLowerCase().includes(this.input.toLowerCase())
+      );
 
-     
-      targetUsers.forEach(user=>this.filterdPosts=this.filterdPosts.concat(this.getUserPosts(user.id)))
-    }, initPage() {
+      targetUsers.forEach(
+        (user) =>
+          (this.filterdPosts = this.filterdPosts.concat(
+            this.getUserPosts(user.id)
+          ))
+      );
+    },
+    initPage() {
       this.paginationListCount = this.filterdPosts.length;
       if (this.paginationListCount < this.postsPerPage) {
         this.paginationListPosts = this.filterdPosts;
       } else {
-        this.paginationListPosts = this.filterdPosts.slice(0, this.postsPerPage);
+        this.paginationListPosts = this.filterdPosts.slice(
+          0,
+          this.postsPerPage
+        );
       }
     },
     updatePage(pageIndex) {
@@ -84,7 +108,7 @@ export default {
     },
   },
   computed: {
-    ...mapGetters("posts", ["allPosts",'getUserPosts']),
+    ...mapGetters("posts", ["allPosts", "getUserPosts"]),
     ...mapGetters("users", ["allUsers"]),
     needsPagination() {
       return this.filterdPosts.length > this.postsPerPage;
@@ -94,15 +118,13 @@ export default {
       return Math.ceil(this.filterdPosts.length / this.postsPerPage);
     },
   },
-  mounted() {
+  async mounted() {
     this.setFilteredPosts();
+    this.initPage();
   },
   updated() {
     this.setFilteredPosts();
-  },
-  created() {
     this.initPage();
-    this.updatePage(this.page);
   },
 };
 </script>

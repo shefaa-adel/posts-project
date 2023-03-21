@@ -5,7 +5,8 @@ export default {
   loginUser(state, user) {
     state.isLogedIn = false;
     const regesterdUser = JSON.parse(localStorage.getItem("user"));
-    if (regesterdUser&&
+    if (
+      regesterdUser &&
       regesterdUser.email === user.email &&
       regesterdUser.password === user.password
     ) {
@@ -13,8 +14,8 @@ export default {
       state.isLogedIn = true;
     }
   },
-  logoutUser(state){
+  logoutUser(state) {
     state.isLogedIn = false;
-    state.currentUser = '';
-  }
+    state.currentUser = "";
+  },
 };

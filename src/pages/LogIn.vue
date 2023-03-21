@@ -1,18 +1,21 @@
 <template>
-  <base-card>
-    <h2>Login now!</h2>
+  <Cover coverTxt="Regester Now!"></Cover>
+  <v-card width="60%" class="mx-auto my-15 px-15 py-15 formCard">
     <LogIn-form @login-user="login"></LogIn-form>
-    <p v-if="!isValidData">Incorrect email or password</p>
-    <p>Dont have an account? <router-link to="/regester">SignUp</router-link></p>
-  </base-card>
+    <p v-if="!isValidData" class="text-red">Incorrect email or password</p>
+    <p>
+      Dont have an account? <router-link to="/regester">SignUp</router-link>
+    </p>
+  </v-card>
 </template>
 
 <script>
 import LogInForm from "../components/regestration/LogInForm.vue";
 import { mapActions, mapGetters } from "vuex";
+import Cover from "../components/ui/Cover.vue";
 
 export default {
-  components: { LogInForm },
+  components: { LogInForm, Cover },
   data() {
     return {
       isValidData: true,
@@ -35,3 +38,12 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+@media only screen and (max-width: 600px) {
+  .formCard {
+    width: 100% !important;
+    padding: 5px !important;
+  }
+}
+</style>

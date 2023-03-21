@@ -7,7 +7,7 @@
       <v-col cols="12" md="9" class="flex">
         <v-row>
           <v-col
-            v-if="!needsPagination"
+            v-show="!needsPagination"
             v-for="post in filteredPosts"
             cols="12"
             md="6"
@@ -19,12 +19,11 @@
               :title="post.title"
               :body="post.body"
               :userId="post.userId"
-             
             ></post-item>
           </v-col>
           <v-col
-          v-if="needsPagination"
-          v-for="post in paginationListPosts"
+            v-show="needsPagination"
+            v-for="post in paginationListPosts"
             cols="12"
             md="6"
             lg="4"
@@ -57,7 +56,6 @@
 import { mapActions, mapGetters } from "vuex";
 import PostItem from "./PostItem.vue";
 import PostFiltering from "./PostFiltering.vue";
-
 
 export default {
   components: { PostItem, PostFiltering },
@@ -122,17 +120,14 @@ export default {
       return Math.ceil(this.filteredPosts.length / this.postsPerPage);
     },
   },
-  mounted() {
-    this.getAllUsers();
-    this.getAllPosts();
+  async mounted() {
+    await this.getAllUsers();
+    await this.getAllPosts();
     this.allUsers.forEach((user) => {
       this.usersFilters = { ...this.usersFilters, [user.id]: false };
     });
     this.filteredPosts = this.allPosts;
-  },
-  created() {
     this.initPage();
-    this.updatePage(this.page);
   },
 };
 </script>

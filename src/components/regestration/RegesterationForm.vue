@@ -1,49 +1,55 @@
 <template>
-  <form @submit.prevent="saveUser">
-    <div class="form-control" :class="{ invalid: !firstName.isValid }">
+  <v-form @submit.prevent="saveUser">
+    <div class="my-5" :class="{ invalid: !firstName.isValid }">
       <label for="firstName">First Name</label>
-      <input
-        type="text"
+      <v-text-field
         id="firstName"
         v-model.trim="firstName.val"
         @blur="clearValidity('firstName')"
-      />
+      ></v-text-field>
       <p v-if="!firstName.isValid">First name must be not empty.</p>
     </div>
-    <div class="form-control" :class="{ invalid: !lastName.isValid }">
+    <div class="my-5" :class="{ invalid: !lastName.isValid }">
       <label for="lastName">Last Name</label>
-      <input
-        type="text"
+      <v-text-field
         id="lastName"
         v-model.trim="lastName.val"
         @blur="clearValidity('lastName')"
-      />
+      ></v-text-field>
       <p v-if="!lastName.isValid">Last name must be not empty.</p>
     </div>
-    <div class="form-control" :class="{ invalid: !email.isValid }">
+    <div class="my-5" :class="{ invalid: !email.isValid }">
       <label for="email">E-mail</label>
-      <input
+      <v-text-field
         type="email"
         id="email"
         v-model.trim="email.val"
         @blur="clearValidity('email')"
-      />
+      ></v-text-field>
       <p v-if="!email.isValid">Email must be not empty.</p>
     </div>
-    <div class="form-control" :class="{ invalid: !password.isValid }">
+    <div class="my-5" :class="{ invalid: !password.isValid }">
       <label for="password">Password</label>
-      <input
+      <v-text-field
         type="password"
         id="password"
         v-model.trim="password.val"
         @blur="clearValidity('password')"
-      />
+      ></v-text-field>
       <p v-if="!password.isValid">Password must be not empty.</p>
     </div>
 
-    <base-button>Regester</base-button>
-    <p v-if="!formIsValid">Please fix errors and try again..</p>
-  </form>
+    <v-sheet elevation="0" class="text-center">
+      <v-btn
+        type="submit"
+        variant="tonal"
+        color="#FCDB67"
+        style="background-color: #1f1f1f"
+        >Regester</v-btn
+      >
+      <p v-if="!formIsValid">Please fix errors and try again..</p>
+    </v-sheet>
+  </v-form>
 </template>
 
 <script>
@@ -93,7 +99,6 @@ export default {
         this.password.isValid = false;
         this.formIsValid = false;
       }
-     
     },
     saveUser() {
       this.validateForm();
@@ -114,58 +119,12 @@ export default {
 </script>
 
 <style scoped>
-.form-control {
-  margin: 0.5rem 0;
-}
-
 label {
   font-weight: bold;
   display: block;
   margin-bottom: 0.5rem;
 }
-
-input[type="checkbox"] + label {
-  font-weight: normal;
-  display: inline;
-  margin: 0 0 0 0.5rem;
-}
-
-input,
-textarea {
-  display: block;
-  width: 100%;
-  border: 1px solid #ccc;
-  font: inherit;
-}
-
-input:focus,
-textarea:focus {
-  background-color: #f0e6fd;
-  outline: none;
-  border-color: #3d008d;
-}
-
-input[type="checkbox"] {
-  display: inline;
-  width: auto;
-  border: none;
-}
-
-input[type="checkbox"]:focus {
-  outline: #3d008d solid 1px;
-}
-
-h3 {
-  margin: 0.5rem 0;
-  font-size: 1rem;
-}
-
 .invalid label {
   color: red;
-}
-
-.invalid input,
-.invalid textarea {
-  border: 1px solid red;
 }
 </style>
