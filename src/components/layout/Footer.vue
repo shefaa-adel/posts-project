@@ -27,8 +27,10 @@
   .footerTxt {
     font-size: 0.5em;
   }
-  .footerimg {
-    width: 200px;
+  .footerImg {
+    width: 20% !important;
+    height: 20% !important;
+    margin-top: 10px;
   }
 }
 </style>
