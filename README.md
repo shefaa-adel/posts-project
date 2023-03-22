@@ -28,8 +28,7 @@ The APIs used: http://jsonplaceholder.typicode.com/
 ## Project Setup
 
 ```sh
-npm install![Uploading 2023-03-22 (3).png…]()
-
+npm install
 ```
 
 ### Compile and Hot-Reload for Development
