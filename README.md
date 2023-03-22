@@ -47,14 +47,13 @@ npm run build
 ### Run Unit Tests with [Vitest](https://vitest.dev/)
 
 ```sh
-npm install
 npm run test
 ```
 
 ### Start it out
 
 ```sh
-npm run test
+npm install
 json-server data.json  //for managing comments
 npm run dev
 npm run test
