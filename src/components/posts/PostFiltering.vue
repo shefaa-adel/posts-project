@@ -1,5 +1,4 @@
 <template>
-  <!-- <v-sheet class="fixedFilterLabel" ><v-btn :onclick="sidebar = !sidebar">Show filters</v-btn></v-sheet> -->
   <v-navigation-drawer v-model="sidebar" app clipped color="#FCDB67">
     <h2 class="ms-3">Find Your Favourite Users' Posts</h2>
     <v-list-item class="filter-option" v-for="user in allUsers" :key="user.id">
@@ -82,24 +81,7 @@ export default {
 .filter-option label {
   margin-left: 0.5rem;
 }
-.hiddenFilters {
-  display: none;
-}
 
-/* .getFilters {
-  height: 60px;
-  color: #fcdb67;
-  background-color: rgb(39, 39, 39);
-  padding: 7px;
-  width: 100%;
-  text-align: center;
-  line-height: 40px;
-} */
-@media only screen and (max-width: 768px) {
-  /* .filter-option {
-    display: inline-block;
-  } */
-}
 .fixedFilters {
   color: #fcdb67;
   background-color: rgb(39, 39, 39);

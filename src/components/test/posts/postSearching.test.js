@@ -11,7 +11,7 @@ test("mount Post searching component", async () => {
         plugins: [Vuetify],
       },
       props: {
-        searchInput:'test input'
+        searchInput: "test input",
       },
     });
   });

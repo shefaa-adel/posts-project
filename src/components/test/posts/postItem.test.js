@@ -22,7 +22,7 @@ test("mount Post item component", async () => {
     expect(wrapper.text()).toContain("sunt aut facere");
   });
 
-  it('renders ui correctly', () => {
-    expect(wrapper.find('v-btn').text()).toBe('Read more');
+  it("renders ui correctly", () => {
+    expect(wrapper.find("v-btn").text()).toBe("Read more");
   });
 });

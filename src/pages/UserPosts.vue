@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from "vuex";
+import { mapGetters } from "vuex";
 import PostItem from "../components/posts/PostItem.vue";
 
 export default {
@@ -34,16 +34,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.controls {
-  display: flex;
-  justify-content: space-between;
-}
-</style>

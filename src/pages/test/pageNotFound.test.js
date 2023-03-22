@@ -12,7 +12,7 @@ test("mount page not found page", async () => {
       },
     });
   });
-  it('renders a home btn', () => {
-    expect(wrapper.find('v-btn').text()).toBe('GO HOME');
+  it("renders a home btn", () => {
+    expect(wrapper.find("v-btn").text()).toBe("GO HOME");
   });
 });

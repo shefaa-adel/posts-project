@@ -7,7 +7,9 @@
         v-model.trim="firstName.val"
         @blur="clearValidity('firstName')"
       ></v-text-field>
-      <p class="text-red" v-if="!firstName.isValid">First name must be not empty.</p>
+      <p class="text-red" v-if="!firstName.isValid">
+        First name must be not empty.
+      </p>
     </div>
     <div class="my-5" :class="{ invalid: !lastName.isValid }">
       <label for="lastName">Last Name</label>
@@ -16,7 +18,9 @@
         v-model.trim="lastName.val"
         @blur="clearValidity('lastName')"
       ></v-text-field>
-      <p class="text-red" v-if="!lastName.isValid">Last name must be not empty.</p>
+      <p class="text-red" v-if="!lastName.isValid">
+        Last name must be not empty.
+      </p>
     </div>
     <div class="my-5" :class="{ invalid: !email.isValid }">
       <label for="email">E-mail</label>
@@ -36,7 +40,9 @@
         v-model.trim="password.val"
         @blur="clearValidity('password')"
       ></v-text-field>
-      <p class="text-red" v-if="!password.isValid">Password must be not empty.</p>
+      <p class="text-red" v-if="!password.isValid">
+        Password must be not empty.
+      </p>
     </div>
 
     <v-sheet elevation="0" class="text-center">
@@ -47,7 +53,9 @@
         style="background-color: #1f1f1f"
         >Regester</v-btn
       >
-      <p class="text-red" v-if="!formIsValid">Please fix errors and try again..</p>
+      <p class="text-red" v-if="!formIsValid">
+        Please fix errors and try again..
+      </p>
     </v-sheet>
   </v-form>
 </template>

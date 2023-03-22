@@ -1,13 +1,10 @@
 <template>
   <v-card class="mx-auto rounded-card" elevation="0">
     <v-img :src="postImg" height="200px" cover class="mt-0"></v-img>
-
     <v-card-title>
       {{ title }}
     </v-card-title>
-
     <v-card-subtitle> By: {{ userName }} </v-card-subtitle>
-
     <v-card-actions>
       <v-btn color="orange-lighten-1" variant="text" :to="postDetailsLink">
         Read more
@@ -47,22 +44,5 @@ export default {
 <style scoped>
 v-card {
   height: 300px;
-}
-h3 {
-  font-size: 1.5rem;
-}
-
-h3,
-h4 {
-  margin: 0.5rem 0;
-}
-
-div {
-  margin: 0.5rem 0;
-}
-
-.actions {
-  display: flex;
-  justify-content: flex-end;
 }
 </style>

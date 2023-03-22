@@ -15,7 +15,7 @@ test("mount page not found page", async () => {
       },
     });
   });
-  it('contains correct content', () => {
+  it("contains correct content", () => {
     expect(wrapper.findComponent(Cover)).toBeTruthy();
     expect(wrapper.findComponent(PostSearching)).toBeTruthy();
     expect(wrapper.findComponent(PostsComponent)).toBeTruthy();

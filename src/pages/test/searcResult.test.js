@@ -11,7 +11,7 @@ test("mount search result page", async () => {
         plugins: [Vuetify],
       },
       props: {
-        input:'test input'
+        input: "test input",
       },
     });
   });

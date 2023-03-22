@@ -20,6 +20,7 @@
 </template>
 
 <script>
+
 import { mapActions, mapGetters } from "vuex";
 import UserItem from "../components/users/UserItem.vue";
 import Cover from "../components/ui/Cover.vue";
@@ -46,8 +47,4 @@ ul {
   padding: 0;
 }
 
-.controls {
-  display: flex;
-  justify-content: space-between;
-}
 </style>

@@ -1,9 +1,6 @@
 <template>
-  <v-footer class="d-flex  flex-column pa-0" color="transparent">
-    <div
-      class="footerContent  w-100  px-4"
-      style="background-color: #FCDB67;"
-    >
+  <v-footer class="d-flex flex-column pa-0" color="transparent">
+    <div class="footerContent w-100 px-4" style="background-color: #fcdb67">
       <v-container class="d-flex justify-space-between">
         <img
           class="footerImg"

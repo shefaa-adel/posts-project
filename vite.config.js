@@ -20,8 +20,8 @@ export default defineConfig({
       inline: ["vuetify"],
     },
     coverage: {
-      provider: "istanbul", 
-      reporter: ['text', 'json', 'html'],
+      provider: "istanbul",
+      reporter: ["text", "json", "html"],
     },
   },
 });

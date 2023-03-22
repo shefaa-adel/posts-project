@@ -18,7 +18,9 @@
         v-model.trim="password.val"
         @blur="clearValidity('password')"
       />
-      <p class="text-red" v-if="!password.isValid">Password must be not empty.</p>
+      <p class="text-red" v-if="!password.isValid">
+        Password must be not empty.
+      </p>
     </div>
 
     <v-sheet elevation="0" class="text-center">
@@ -29,7 +31,9 @@
         style="background-color: #1f1f1f"
         >Login</v-btn
       >
-      <p class="text-red" v-if="!formIsValid">Please fix errors and try again..</p>
+      <p class="text-red" v-if="!formIsValid">
+        Please fix errors and try again..
+      </p>
     </v-sheet>
   </v-form>
 </template>
@@ -87,7 +91,6 @@ label {
   display: block;
   margin-bottom: 0.5rem;
 }
-
 .invalid label {
   color: red;
 }

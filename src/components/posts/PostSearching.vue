@@ -1,30 +1,13 @@
 <template>
   <v-container>
-    <v-row
-      class="searchComponent mt-15"
-      justify="center"
-      align="center"
-      no-gutters
-    >
+    <v-row class="searchComponent mt-15" justify="center" align="center" no-gutters>
       <v-col cols="12" align="center">
         <p class="text-h4 text-white">Search For Your Favourite Post, Author</p>
       </v-col>
       <v-col cols="12" align="center">
-        <v-text-field
-          :loading="loading"
-          v-model="input"
-          id="serchInput"
-          density="compact"
-          variant="solo"
-          label="Search Posts"
-          class="serchInput"
-          persistent-clear
-          single-line
-          hide-details
-        ></v-text-field>
-        <v-btn @click="search" class="mt-5" style="background-color: #fcdb67"
-          >Search</v-btn
-        >
+        <v-text-field :loading="loading" v-model="input" id="serchInput" density="compact" variant="solo"
+          label="Search Posts" class="serchInput" persistent-clear single-line hide-details></v-text-field>
+        <v-btn @click="search" class="mt-5" style="background-color: #fcdb67">Search</v-btn>
       </v-col>
     </v-row>
   </v-container>
@@ -66,6 +49,7 @@ export default {
   p {
     font-size: 1.5em !important;
   }
+
   .serchInput {
     width: 90%;
   }

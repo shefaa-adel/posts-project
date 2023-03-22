@@ -12,7 +12,9 @@ test("mount footer component", async () => {
       },
     });
   });
-  it('renders data correctly', () => {
-    expect(wrapper.find('p').text()).toBe('Read The Latest And Greatest From Our Experts');
+  it("renders data correctly", () => {
+    expect(wrapper.find("p").text()).toBe(
+      "Read The Latest And Greatest From Our Experts"
+    );
   });
 });
