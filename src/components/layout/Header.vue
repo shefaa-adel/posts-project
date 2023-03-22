@@ -25,14 +25,14 @@
         >
           <router-link to="#" tag="span" style="cursor: pointer">
             <img
-              src="../../../assets/images/socialy-logo-white.png"
+              src="../../assets/images/socialy-logo-white.png"
               style="width: 25%"
           /></router-link>
         </v-toolbar-title>
         <v-toolbar-title class="hidden-sm-and-down">
           <router-link to="/" tag="span" style="cursor: pointer">
             <img
-              src="../../../assets/images/socialy-logo-white.png"
+              src="../../assets/images/socialy-logo-white.png"
               style="width: 25%"
             />
           </router-link>
@@ -64,7 +64,6 @@ import { mapGetters, mapActions } from "vuex";
 export default {
   data() {
     return {
-      appTitle: "Awesome App",
       sidebar: false,
       windowTop: 0,
     };

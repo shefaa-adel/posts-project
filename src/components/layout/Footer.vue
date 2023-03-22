@@ -4,7 +4,7 @@
       <div class="bg-transparent d-flex w-100 justify-space-between px-4">
         <img
           class="footerImg"
-          src="../../../assets/images/socialy-logo.png"
+          src="../../assets/images/socialy-logo.png"
           style="width: 12%"
         />
         <p class="footerTxt">Read The Latest And Greatest From Our Experts</p>
