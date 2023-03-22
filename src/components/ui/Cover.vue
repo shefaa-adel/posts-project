@@ -17,7 +17,8 @@ export default {
 div {
   height: 500px;
   width: 100%;
-  background-image: url("../../assets/images/bg-section-handrawn-2a.jpg");
+  background-image: url("../../assets/images/bg-section-handrawn-2a-wide.jpg");
+  background-size: cover;
   text-align: center;
   padding-top: 10%;
   position: relative;
