@@ -28,7 +28,7 @@
     font-size: 0.5em;
   }
   .footerimg {
-    width: 5%;
+    width: 200px;
   }
 }
 </style>
